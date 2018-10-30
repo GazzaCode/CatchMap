@@ -1,10 +1,8 @@
 package com.example.gareth.catchmap;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-
-import java.io.File;
-import java.net.URI;
 
 @Entity(tableName = "catch_table")
 public class Catch
@@ -12,7 +10,8 @@ public class Catch
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String photo;
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] photo;
     private String fishType;
     private float fishLength;
     private float fishWeight;
@@ -20,7 +19,7 @@ public class Catch
     private float longitude;
     private float latitude;
 
-    public Catch(String fishType, float fishLength, float fishWeight, String desc, float latitude, float longitude, String photo) {
+    public Catch(String fishType, float fishLength, float fishWeight, String desc, float latitude, float longitude, byte[] photo) {
         this.photo = photo;
         this.fishType = fishType;
         this.fishLength = fishLength;
@@ -38,7 +37,7 @@ public class Catch
         return id;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 

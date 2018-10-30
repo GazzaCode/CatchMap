@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Catch.class}, version = 1)
+@Database(entities = {Catch.class}, version = 2)
 public abstract class CatchDatabase extends RoomDatabase {
 
     private static CatchDatabase instance;
@@ -46,14 +46,15 @@ public abstract class CatchDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            catchDao.insert(new Catch("Due Fish", (float)1.6, (float)5.2,
+
+          /*  catchDao.insert(new Catch("Due Fish", (float)1.6, (float)5.2,
                     "Used squid", (float)-32.1224840, (float)115.8518331, ""));
 
             catchDao.insert(new Catch("Test", (float)2.3, (float)10,
                     "Used squid", (float)-32.1224961, (float)115.6518331, ""));
 
             catchDao.insert(new Catch("Snapper", (float)2.3, (float)10,
-                    "Used squid", (float)-32.1224961, (float)115.7518331, ""));
+                    "Used squid", (float)-32.1224961, (float)115.7518331, ""));*/
 
             return null;
         }

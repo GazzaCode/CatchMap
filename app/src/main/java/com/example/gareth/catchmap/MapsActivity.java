@@ -209,6 +209,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         bundle.putString("description", c.getDesc());
                         bundle.putFloat("latitude", c.getLatitude());
                         bundle.putFloat("longitude", c.getLongitude());
+                        bundle.putByteArray("photo", c.getPhoto());
 
                         Toast.makeText(MapsActivity.this, c.getFishType(), Toast.LENGTH_SHORT).show();
                     }

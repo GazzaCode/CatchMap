@@ -1,5 +1,7 @@
 package com.example.gareth.catchmap;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -47,6 +49,9 @@ public class display_catch extends Fragment
 
         //Add image to the fragment
         ImageView imgView = view.findViewById(R.id.image_container);
+        byte[] bitmapdata = getArguments().getByteArray("photo");
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length);
+        imgView.setImageBitmap(bitmap);
 
         return view;
     }

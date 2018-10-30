@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 public class Add_catch_details extends Fragment
 {
 
@@ -43,6 +45,10 @@ public class Add_catch_details extends Fragment
         //Add image to the fragment
         ImageView imgView = view.findViewById(R.id.image_container);
         imgView.setImageBitmap(img);
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        img.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
 
         Button addButton = view.findViewById(R.id.btn_add);
 
@@ -90,7 +96,7 @@ public class Add_catch_details extends Fragment
 
 
                 Catch newCatch = new Catch(type, length, weight,
-                        description, latitude, longitude, "");
+                        description, latitude, longitude, byteArray);
 
                 catchViewModel.insert(newCatch);
 
