@@ -106,8 +106,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Override
                 public void onClick(View v) {
 
-                    //TODO: pass currentLocation to the camera object, then to the add_details object using bundle
                     Intent intent = new Intent(getApplicationContext(), add_catch_photo.class);
+                    intent.putExtra("latitude", (float)currentLocation.getLatitude());
+                    intent.putExtra("longitude", (float)currentLocation.getLongitude());
                     startActivity(intent);
                 }
             });

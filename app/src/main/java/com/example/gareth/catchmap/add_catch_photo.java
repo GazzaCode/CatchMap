@@ -12,6 +12,8 @@ import android.widget.ImageView;
 public class add_catch_photo extends FragmentActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    float lat;
+    float lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +43,18 @@ public class add_catch_photo extends FragmentActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
 
+            Bundle bundleExtras = getIntent().getExtras();
+            lat = bundleExtras.getFloat("latitude");
+            lng = bundleExtras.getFloat("longitude");
+
             ImageView mImageView = findViewById(R.id.camera_container);
 
             //Add bitmap to a bundle
             Bundle b = new Bundle();
             b.putParcelable("image", imageBitmap);
+            b.putFloat("latitude", lat);
+            b.putFloat("longitude", lng);
+
 
             //Create an instance of the fragment
             Fragment frag = new Add_catch_details();

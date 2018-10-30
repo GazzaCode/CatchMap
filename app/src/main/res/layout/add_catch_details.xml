@@ -88,7 +88,7 @@
             android:layout_height="match_parent"
             android:text="Latitude: " />
 
-        <EditText
+        <TextView
             android:id="@+id/txt_fish_lat"
             android:layout_width="300dp"
             android:layout_height="35dp" />
@@ -104,7 +104,7 @@
             android:layout_height="match_parent"
             android:text="Longitude: " />
 
-        <EditText
+        <TextView
             android:id="@+id/txt_fish_long"
             android:layout_width="300dp"
             android:layout_height="35dp" />

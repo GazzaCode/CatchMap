@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Add_catch_details extends Fragment
 {
@@ -18,9 +20,15 @@ public class Add_catch_details extends Fragment
     private CatchViewModel catchViewModel;
     private boolean done = false;
 
+    float latitude;
+    float longitude;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         catchViewModel = ViewModelProviders.of(this).get(CatchViewModel.class);
+
+        latitude = getArguments().getFloat("latitude");
+        longitude = getArguments().getFloat("longitude");
     }
 
     @Override
@@ -38,6 +46,18 @@ public class Add_catch_details extends Fragment
 
         Button addButton = view.findViewById(R.id.btn_add);
 
+        //Fish lat
+        TextView latText = view.findViewById(R.id.txt_fish_lat);
+        //latitude = Float.valueOf(latText.getText().toString());
+        String lat = Float.toString(latitude);
+        latText.setText(lat);
+
+        //Fish lng
+        TextView longText = view.findViewById(R.id.txt_fish_long);
+        //longitude = Float.valueOf(longText.getText().toString());
+        String lng = Float.toString(longitude);
+        longText.setText(lng);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +67,6 @@ public class Add_catch_details extends Fragment
                 float weight;
                 float length;
                 String description = "";
-                float latitude;
-                float longitude;
 
                 //Create EditText instances take values from them
                 //Fish type
@@ -67,13 +85,9 @@ public class Add_catch_details extends Fragment
                 EditText descText = view.findViewById(R.id.txt_fish_desc);
                 description = descText.getText().toString();
 
-                //Fish lat
-                EditText latText = view.findViewById(R.id.txt_fish_lat);
-                latitude = Float.valueOf(latText.getText().toString());
 
-                //Fish lng
-                EditText longText = view.findViewById(R.id.txt_fish_long);
-                longitude = Float.valueOf(longText.getText().toString());
+                Toast.makeText(getActivity().getApplicationContext(), lat, Toast.LENGTH_SHORT).show();
+
 
                 Catch newCatch = new Catch(type, length, weight,
                         description, latitude, longitude, "");
