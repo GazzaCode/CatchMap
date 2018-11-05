@@ -7,106 +7,130 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
-
-    <ImageView
-        android:id="@+id/image_container"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
-        <!--android:src=""-->
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_gravity="center">
+    <ImageView
+        android:id="@+id/image_container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:paddingTop="8dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Fish Type: " />
 
         <EditText
             android:id="@+id/txt_fish_type"
             android:layout_width="300dp"
-            android:layout_height="35dp" />
+            android:layout_height="50dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Fish Weight: " />
 
         <EditText
             android:id="@+id/txt_fish_weight"
             android:layout_width="300dp"
-            android:layout_height="35dp" />
+            android:layout_height="50dp"
+            android:hint="KG"
+            android:inputType="numberDecimal"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Fish Length: " />
 
         <EditText
             android:id="@+id/txt_fish_length"
             android:layout_width="300dp"
-            android:layout_height="35dp" />
+            android:layout_height="50dp"
+            android:hint="CM"
+            android:inputType="numberDecimal"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Description: " />
 
         <EditText
             android:id="@+id/txt_fish_desc"
             android:layout_width="300dp"
-            android:layout_height="35dp" />
+            android:layout_height="50dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Latitude: " />
 
         <TextView
             android:id="@+id/txt_fish_lat"
-            android:layout_width="300dp"
+            android:layout_width="100dp"
             android:layout_height="35dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
             android:text="Longitude: " />
 
         <TextView
             android:id="@+id/txt_fish_long"
-            android:layout_width="300dp"
+            android:layout_width="100dp"
             android:layout_height="35dp" />
     </LinearLayout>
 
@@ -114,10 +138,11 @@
         android:id="@+id/btn_add"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Add" />
+        android:text="Add"
+        android:layout_gravity="center"/>
 
-
-
+    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

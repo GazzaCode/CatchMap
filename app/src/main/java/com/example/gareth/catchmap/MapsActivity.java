@@ -81,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //onChanged is called whenever data is changed throughout the app
             @Override
             public void onChanged(@Nullable List<Catch> catches) {
-                Toast.makeText(MapsActivity.this, "OnChanged Called", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MapsActivity.this, "OnChanged Called", Toast.LENGTH_SHORT).show();
 
                 catchHolder = catches;
 
@@ -124,10 +124,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         try{
             if(mLocationPermissionGranted){
-                Task location = mFusedLocationProviderClient.getLastLocation();
-                location.addOnCompleteListener(new OnCompleteListener() {
+                Task<Location> location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
-                    public void onComplete(@NonNull Task task) {
+                    public void onComplete(@NonNull Task<Location> task) {
                         if(task.isSuccessful()){
                             Log.d(TAG, "onComplete: found location");
                             currentLocation = (Location) task.getResult();
@@ -210,8 +210,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         bundle.putFloat("latitude", c.getLatitude());
                         bundle.putFloat("longitude", c.getLongitude());
                         bundle.putByteArray("photo", c.getPhoto());
-
-                        Toast.makeText(MapsActivity.this, c.getFishType(), Toast.LENGTH_SHORT).show();
                     }
                 }
 

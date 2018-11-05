@@ -1,7 +1,6 @@
 package com.example.gareth.catchmap;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,15 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
 public class Add_catch_details extends Fragment
 {
-
+    //get the view model instance for inserting
     private CatchViewModel catchViewModel;
-    private boolean done = false;
 
     float latitude;
     float longitude;
@@ -70,8 +67,8 @@ public class Add_catch_details extends Fragment
 
                 //Variables to hold the views inputs
                 String type = "";
-                float weight;
-                float length;
+                float weight = 0.0f;
+                float length = 0.0f;
                 String description = "";
 
                 //Create EditText instances take values from them
@@ -81,19 +78,22 @@ public class Add_catch_details extends Fragment
 
                 //Fish weight
                 EditText weightText = view.findViewById(R.id.txt_fish_weight);
-                weight = Float.valueOf(weightText.getText().toString());
+                if(weightText.getText().toString().equals("")){
+                    weight = 0.0f;
+                }else
+                    weight = Float.valueOf(weightText.getText().toString());
+
 
                 //Fish length
                 EditText lengthText = view.findViewById(R.id.txt_fish_length);
-                length = Float.valueOf(lengthText.getText().toString());
+                if(lengthText.getText().toString().equals("")) {
+                    length = 0.0f;
+                } else
+                    length = Float.valueOf(lengthText.getText().toString());
 
                 //Description
                 EditText descText = view.findViewById(R.id.txt_fish_desc);
                 description = descText.getText().toString();
-
-
-                Toast.makeText(getActivity().getApplicationContext(), lat, Toast.LENGTH_SHORT).show();
-
 
                 Catch newCatch = new Catch(type, length, weight,
                         description, latitude, longitude, byteArray);
@@ -108,6 +108,8 @@ public class Add_catch_details extends Fragment
 
         return view;
     }
+
+
 
 
 

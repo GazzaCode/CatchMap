@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.ImageView;
 
 public class add_catch_photo extends FragmentActivity {
@@ -29,6 +31,7 @@ public class add_catch_photo extends FragmentActivity {
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+
     }
 
     //This method only passes on the thumbnail image of the taken image,
@@ -47,7 +50,6 @@ public class add_catch_photo extends FragmentActivity {
             lat = bundleExtras.getFloat("latitude");
             lng = bundleExtras.getFloat("longitude");
 
-            ImageView mImageView = findViewById(R.id.camera_container);
 
             //Add bitmap to a bundle
             Bundle b = new Bundle();
@@ -66,7 +68,18 @@ public class add_catch_photo extends FragmentActivity {
             transaction.replace(R.id.details_container, frag);
             transaction.addToBackStack(null);
             transaction.commitAllowingStateLoss();
-
+        }else{
+            finish();
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
